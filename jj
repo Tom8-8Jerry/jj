@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>幸福倒计时</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 80%;
+      margin: 50px auto;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+    }
+    #timeDifference {
+      font-size: 24px;
+      color: #007bff;
+    }
+  </style>
+  <script>
+    function calculateTimeDifference() {
+      var time1 = new Date('2024-04-03T21:00:00');
+      setInterval(function() {
+        var time2 = new Date();
+        var timeDiff = time1 - time2;
+        var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+        document.getElementById('timeDifference').innerHTML = 
+          '距离见到姣姐还有：' + days + '天, ' + hours + '小时, ' + minutes + '分钟, ' + seconds + '秒';
+      }, 1000);
+    }
+  </script>
+</head>
+<body onload="calculateTimeDifference()">
+  <div class="container">
+    <h1>幸福倒计时</h1>
+    <p id="timeDifference"></p>
+  </div>
+</body>
+</html>
